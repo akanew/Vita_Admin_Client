@@ -2,7 +2,7 @@
 	require_once('CurlSend.php');
 	try {
 		$curl = new CurlSend();
-		$json_string='{"id":3, "name":"Новый 2", "sanatoriumId": "2"}';
+		$json_string='{"add":{"id":3, "name":"Чёрный лебедь", "sanatoriumId": "2"}}';
 		$obj=json_decode($json_string);
 		$curl->configure('http://localhost', $obj, 'POST');
 		//$curl->configure('http://vhost27259.cpsite.ru/index.php', ['z'=>'1'], 'POST');
