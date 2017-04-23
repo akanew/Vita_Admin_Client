@@ -1,82 +1,81 @@
 <?php
-	// включаем отображение всех ошибок, кроме E_NOTICE
-    error_reporting(E_WARNING);
-    ini_set('display_errors', 1);
-	
 	class CurlSend {
 		private $request;
-		private $url;
+		/* Конструктор класса CURL.
+		 * @throws Exception, если при инициализации возникли ошибки. 
+		 */
+		public function __construct() {
+			$this->request = curl_init();
+			$this->throwExceptionIfError($this->request);
+		}
 		
 		/* Настройка Curl -запроса.
 		 * @param $url - целевой url-адрес.
 		 * @param $urlParameters - массив параметров в формате 'key' => 'value'.
 		 * @param $method - 'GET' или 'POST' (по умолчанию - 'POST').
+		 * @param $moreOptions - массив включения дополнительных Curl параметров в формате 'PARAMETR' => 'true'.
+		 ** По умолчанию CURLOPT_RETURNTRANSFER - ответ - значение HTTP.
+		 * @throws Exception, если возникли ошибки при настройке.
 		 */
-		public function configure($url, $urlParameters = [], $method = 'POST') {
-			// Указание опций для контекста потока
-			$options = array (
-				'http' => array (
-					'method' => $method,
-					'header' => "Content-Type: application/json; charset=utf-8\r\n",
-					'content' => json_encode($urlParameters)
-				)
-			);
-			 
-			// Создание контекста потока
-			$this->request = stream_context_create($options);
-			$this->url = $url;
+		public function configure($url, $urlParameters = [], $method = 'POST', $moreOptions = [CURLOPT_RETURNTRANSFER => true]) {
+			curl_reset($this->request);
+			$options = [
+				CURLOPT_URL => $url,
+				CURLOPT_POSTFIELDS => http_build_query($urlParameters),
+			];
+			switch ($method) {
+				case 'GET':
+					$options = [CURLOPT_URL => $url.'?'. http_build_query($urlParameters),];
+					break;
+				case 'POST':
+					$options[CURLOPT_POST] = true;
+					break;
+				case 'PUT': 
+					$options[CURLOPT_CUSTOMREQUEST] = "PUT";
+					//$options[CURLOPT_HEADER] = false;
+					//$options[CURLOPT_RETURNTRANSFER] = true;
+					//$options[CURLOPT_HTTPHEADER] = array('Content-Type: application/json',"OAuth-Token: $token");
+					break;
+				case 'DELETE': 
+					$options[CURLOPT_CUSTOMREQUEST] = "DELETE";
+					break;
+				default:
+					throw new Exception('Method must be "GET", "POST", "PUT" or "DELETE".');
+					break;
+			}
+			$options = $options + $moreOptions; 
+			//Проверка на ошибки при настройке
+			foreach ($options as $option => $value) {
+				$configured = curl_setopt($this->request, $option, $value);
+				$this->throwExceptionIfError($configured);
+			}
 		}
 		
 		/* Выполняем Curl-запрос в соответствии с параметрами конфигурации.
-		 * @return возвращает значение функции file_get_contents() - ответ или FALSE. 
+		 * @return возвращает значение функции curl_exec(). 
+		 * Если настроен CURLOPT_RETURNTRANSFER, возвращаемое значение будет ответом HTTP. 
+		 ** В противном случае, значение true (или false, если возникла ошибка).
 		 * @throws Exception, если возникла ошибка при исполнении.
 		 */
 		public function execute() {
-			// Отправка данных и получение результата
-			$result = file_get_contents($this->url, 0, $this->request);
+			$result = curl_exec($this->request);
 			$this->throwExceptionIfError($result);
 			return $result;
 		}
 		
-		/* Проверяем, правильность отработки функций при заданных параметрах. 
-		 * @param $success была ли функция выполнена успешно или нет.
-		 * @throws Exception, если функция не выполнена. Исключение с сообщением об ошибке лежит в E_WARNING.
+		// Закрываем сессию Curl. 
+		public function close() {
+			curl_close($this->request);
+		}
+		
+		/* Проверяем, правильность отработки функций библиотеки Curl при заданных параметрах. 
+		 * @param $success была ли функция curl выполнена успешно или нет.
+		 * @throws Exception, если функция curl не выполнена. Исключение с сообщением об ошибке Curl.
 		 */
 		protected function throwExceptionIfError($success) {
 			if (!$success) {
-				set_error_handler('myHandler', E_WARNING);
+				throw new Exception(curl_error($this->request));
 			}
-		}
-		
-		// Собственный обработчик ошибок E_WARNING
-		private function myHandler($level, $message, $file, $line, $context) {
-			// в зависимости от типа ошибки формируем заголовок сообщения
-			switch ($level) {
-				case E_WARNING:
-					$type = 'Warning';
-					break;
-				default;
-					// это не E_WARNING обработка ложится на сам PHP
-					return false;
-			}
-			echo $type.': '.$message;
-			// сообщаем, что мы обработали ошибку, и дальнейшая обработка не требуется
-			return true;
-		}		
-		
-		/* Формируем строку параметров GET.
-		 * @param $parameters массив параметров.
-		 * @return Parameters в формате GET: '?key1=value1&key2=value2'
-		 */
-		protected function stringifyParameters($parameters) {
-			$parameterString = '?';
-			foreach ($parameters as $key => $value) {
-				$key = urlencode($key);
-				$value = urlencode($value);
-				$parameterString .= "$key=$value&";
-			}
-			rtrim($parameterString, '&');
-			return $parameterString;
 		}
 	}
 ?>
