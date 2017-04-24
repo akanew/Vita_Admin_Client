@@ -17,6 +17,8 @@
 	echo '</pre>';
 	
 	element('input', array('type'=>'submit','onclick'=>'alert(\'123\')'), null, null);
+	echo '<br/>';
+	echo '<br/>';
 	
 	function element($tagName, $attributes = [], $script=null, $valueText=null){
 		$elementBody="";
@@ -40,9 +42,22 @@
 			}
 		}
 
-		if($valueText != null)
+		if($valueText == null)
 			$elementCode="<".$tagName.$elementBody.(($script != null)? ' script="'.$script.'"': "")."/>";
 		else $elementCode="<".$tagName.$elementBody.(($script != null)? ' script="'.$script.'"': "").">".$valueText."</".$tagName.">";
 		echo $elementCode;
 	}
+	
+	$tags = array('label', 'input','br','label', 'input','br', 'input');
+	$attributes = array(array('for'=>'login'), array('name'=>'login', 'placeholder'=>'login'),array(),array('for'=>'password'), array('name'=>'password', 'placeholder'=>'password'),array(), array('type'=>'submit'));
+	$scripts = array(null,null,null,null,null,null,null,);
+	$values = array('','','','','','','');
+	
+	$i=0;
+	$res="";
+	while($i<7){
+		$res.=element($tags[$i], $attributes[$i], $scripts[$i], $values[$i]);
+		$i+=1;
+	}
+	element('form', array('method'=>'POST', 'style' => array('border'=>'1px solid black')), null, $res);
 ?>
