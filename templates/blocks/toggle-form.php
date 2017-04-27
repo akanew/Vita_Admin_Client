@@ -1,10 +1,8 @@
 <div class="block-body-content row no-margin" style="height: 100px; width: 100%;">
 	<div class="search-block row no-margin" style="margin-top:8px;">
-		<form class="navbar-form" role="search">
-		  <div class="form-group">
-			<input type="text" class="form-control" placeholder="Search" style="width: 280px;">
-		  </div>
-		  <button type="submit" class="btn btn-default">Submit</button>
+		<form class="navbar-form row" role="search">
+		  <input type="text" class="form-control" placeholder="Search" style="width: 60%; float:left;">
+			<button type="submit" class="btn btn-default" style="width: 30%; margin-left:5%; float:left;">Submit</button>		  
 		</form>
 	</div>
 	<div class="table-block row no-margin" style="padding: 0 10px;">
@@ -145,8 +143,8 @@
 	</div>
 	
 </div>
-<div class="row" id="toggle-frm" style="height: 200px; margin-top: 15px; background:rgba(238, 238, 238, 0.24); margin-left:0; border-bottom:1px solid #64abfb; border-left:1px solid #64abfb; border-right:1px solid #64abfb;">
-	<div class="col-md-10 col-md-offset-1" style="padding-top:10px;">
+<div class="row" id="toggle-frm" style="height: 200px; background:rgba(238, 238, 238, 0.24); margin-left:0; border-bottom:1px solid #64abfb; border-left:1px solid #64abfb; border-right:1px solid #64abfb; width:100%;">
+	<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1" style="padding-top:10px;">
 		<form>
 		  <div class="form-group">
 			<label for="exampleInputEmail1">Email address</label>
@@ -164,12 +162,13 @@
 
 <style>
 	.toggle-form {
-		margin-bottom: -15px;
+		margin-bottom: 0;//-15px;
 	}
 
    .block-body-content {
     overflow: scroll;
 	overflow-x: hidden;
+	
    } 
    .inner{
 	height:44px;
@@ -179,9 +178,7 @@
 	position:relative;
 	padding:2px 160px;
 }
-.inline .inner{
-	//background:#fff;
-}
+
 .inline:before,
 .inline:after{
 	content:"";

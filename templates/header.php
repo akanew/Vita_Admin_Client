@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse no-margin" style="border-radius:0; border: none; box-shadow: 0 0 8px rgba(255,255,255,0.5) inset, 0 0 10px rgba(0,0,0,0.5);">
+<nav class="navbar navbar-inverse no-margin navbar-shadows">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -7,8 +7,19 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <!--<a class="navbar-brand" href="#">Brand</a>-->
+	  <a class="navbar-brand visible-xs" href="#">Brand</a>
     </div>
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="nav vertical-menu visible-xs navbar-nav">
+			<li class="active"><a href="#">Главная</a></li>
+			<li><a href="#">Обратная связь</a></li>
+			<li><a href="#">Каталог</a></li>
+			<li><a href="#">Наши филиалы</a></li>
+			<li><a href="#">Календарь мероприятий</a></li>
+			<li class="nav-divider"></li>
+			<li><a href="#">Вакансии</a></li>
+		</ul>
+	</div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <div class="nav navbar-nav navbar-right">

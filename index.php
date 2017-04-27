@@ -18,17 +18,20 @@
 		<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="./bootstrap/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="./css/style.css">
+		<link rel="stylesheet" href="./css/new_style.css">
 		<meta charset="UTF-8">
 	</head>
 	<body class="no-margin">
 		<div class="row header no-margin">
 			<? include("./templates/header.php"); ?>
 		</div>
-		<div style="position: relative; z-index: 10; width: 250px; height: 102px; background:white; border-radius:35px; margin-top: -87px; margin-left: 70px; margin-bottom: -40px; box-shadow: 0 0 12px rgba(0,0,0,0.6) inset, 0 0 5px rgba(0,0,0,0.5); ">
-		<img src="./logo3.png" alt="logo" style="width: 150px; /*border-radius:50%;*/ margin-left: 20px; margin-top: 15px;"/>
-		</div>
-		<div style="position: relative; z-index: 10; width: 150px; height: 150px; background:white; border-radius:50%; margin-top: -125px; margin-left: 250px; margin-bottom: -40px; box-shadow: 0 0 10px rgba(0,0,0,0.8);">
-			<img src="./logo2.png" alt="logo" style="border-radius:50%; margin-left: 15px; margin-top: 15px;"/>
+		<div class="logo hidden-xs">
+			<div class="logo-text">
+				<img src="./logo3.png" alt="logo"/>
+			</div>
+			<div class="logo-img">
+				<img src="./logo2.png" alt="logo"/>
+			</div>
 		</div>
 		<div class="row body no-margin">
 			<? include("./templates/body.php"); ?>
@@ -47,7 +50,18 @@
 					$('.toggle-div').css('height',(document.body.clientHeight-($('.header').height()+$('.footer').height()))+'px');
 					$("#toggle-frm").css('display','none');
 					$("#toggle-li-text").css('display','none');
-				}				
+					
+					if(document.body.clientWidth < 950){
+						$(".logo-text").css('margin-left',"0");
+						$(".logo-img").css('margin-left',"170px");
+						$(".vertical-menu").css('margin-top',"8px");
+					}
+					else {
+						$(".logo-text").css('margin-left',"70px");
+						$(".logo-img").css('margin-left',"250px");
+						$(".vertical-menu").css('margin-top',"0");
+					}
+				}	
 			);
 			$(window).resize();
 			$( ".toggle-btn" ).click(function() {
@@ -59,35 +73,3 @@
 		<script src="./bootstrap/js/bootstrap.min.js"></script>
 	</body>
 </html>
-<!--<html>
-	<head>
-	<style>
-#grey_box {
-	width: 200px;
-	height: 200px;
-	border: solid 1px #ccc;
-	background: #ddd;
-	position: relative;
-	z-index: 1;
-}
- 
-#blue_box {
-	width: 200px;
-	height: 200px;
-	border: solid 1px #4a7497;
-	background: #8daac3;
-	position: relative;
-	z-index: 0;
-	margin-top: -50px;
-	margin-left: 50px;
-}
-</style>
-</head>
-<body>
-<div id="grey_box"></div>
-<div id="blue_box"></div>
-<div id="grey_box" class="row header no-margin">
-	<? //include("./templates/header.php"); ?>
-</div>
-</body>
-</html>-->

@@ -1,6 +1,6 @@
-<div class="row block-menu no-margin col-md-3" style="float: left; height:100%; border-right: 1px solid #e5e5e5;">
+<div class="row block-menu no-margin hidden-xs col-sm-3 col-md-3 height-100">
 	<? include("./templates/blocks/block-menu.php"); ?>
 </div>
-<div class="row block-body no-margin col-md-9" style="float: right; height:100%;">
+<div class="row block-body no-margin col-sm-9 col-md-9 height-100">
 	<? include("./templates/blocks/block-body.php"); ?>
 </div>
