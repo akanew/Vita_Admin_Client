@@ -1,0 +1,79 @@
+.red{
+	height:100px;
+	background: red;
+}
+
+.green{
+	height:100px;
+	background: green;
+}
+
+.yellow{
+	height:100px;
+	background: yellow;
+}
+
+.yellow-mini{
+	height:20px;
+	width: 100%;
+	background: yellow;
+}
+
+.no-margin{
+padding:0;
+margin:0;
+}
+
+.clear-both{
+	float:left;
+    clear:both;
+}
+
+#registration-form > .frm-group > input {
+	width: 170px;
+}
+
+#registration-form > .frm-group > a {
+	color:white;
+	font-size: 13px;
+	margin-top: 4px;
+}
+
+#registration-form > button {
+	//margin-bottom:5px;
+}
+
+.mrgn-xs{
+	margin-bottom:3px;
+}
+
+#registration-form {
+	margin: 5px;
+}
+
+.toggle-div	
+{
+	height: 200px;
+}
+
+.wrapper 
+{
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.block-body-content 
+{
+	flex: 1 0 auto;
+}
+
+.block-body-footer 
+{
+	flex: 0 0 auto;
+}
+
+.search-block {
+	width: 40%;
+	margin: 0 auto;
+}
