@@ -1,37 +1,48 @@
-<?php
-	/*require_once('CurlSend.php');
-	try {
-		$curl = new CurlSend();
-		$json_string='';//'{"id":"24","name":"Солнышки", "sanatoriumId":"1"}';
-		$obj=json_decode($json_string);
-		//$curl->configure('http://test/teams.php', $obj, 'PUT');//http://mentalritm.ru/vita/teams.php
-		$curl->configure('http://mentalritm.ru/vita/teams.php', $obj, 'GET');//http://mentalritm.ru/vita/teams.php
-		echo $response = $curl->execute();
-		$curl->close();
-	} catch (Exception $exception) {
-		die('An exception has been thrown: ' . $exception->getMessage());
-	}*/
-?>
-
 <html>
 	<head>
 		<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="./bootstrap/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="./css/style.css">
-		<link rel="stylesheet" href="./css/new_style.css">
+		<? include("./php/requestAdapter.php"); ?>
 		<meta charset="UTF-8">
 	</head>
 	<body class="no-margin">
+		<?
+			$url = "http://mentalritm.ru/vita/teams.php";
+			
+			$type = $_POST['type'];
+			if($_POST['page'])
+				$page = $_POST['page'];
+			else {
+				$_POST=array('action'=>'','page'=>'getTeam');
+				$page = $_POST['page'];
+			}
+			
+			if(isset($_POST['action']))
+			{
+				switch($page){
+					case 'addTeam':
+						$jsonString = '{"id":"'.$_POST["id"].'","name":"'.$_POST["name"].'","sanatoriumId":"'.$_POST["sanatoriumId"].'"}';						
+						$jsonAnswer = jsonRequest($url, $type, $jsonString);
+					break;
+					case 'getTeam':						
+						//$jsonAnswer = jsonRequest($url, 'GET', '{}');
+					break;
+					case 'deleteTeam':						
+						$jsonString = '{"id":"'.$_POST["id"].'"}';
+						$jsonAnswer = jsonRequest($url, $type, $jsonString);
+					break;
+					case 'updateTeam':						
+						$jsonString = '{"id":"'.$_POST["id"].'","name":"'.$_POST["name"].'","sanatoriumId":"'.$_POST["sanatoriumId"].'"}';
+						$jsonAnswer = jsonRequest($url, $type, $jsonString);
+					break;
+					default;
+				}
+				$jsonAnswer = jsonRequest($url, 'GET', '{}');
+			}
+		?>
 		<div class="row header no-margin">
 			<? include("./templates/header.php"); ?>
-		</div>
-		<div class="logo hidden-xs">
-			<div class="logo-text">
-				<img src="./logo3.png" alt="logo"/>
-			</div>
-			<div class="logo-img">
-				<img src="./logo2.png" alt="logo"/>
-			</div>
 		</div>
 		<div class="row body no-margin">
 			<? include("./templates/body.php"); ?>
@@ -44,6 +55,7 @@
 		<script>
 			$( window ).resize(
 				function() {
+					// настройка высоты основных блоков при ресайзе окна
 					$('.body').css('height',(document.body.clientHeight-($('.header').height()+$('.footer').height()))+'px');
 					$('.block-menu').css('height',(document.body.clientHeight-($('.header').height()+$('.footer').height()))+'px');
 					$('.block-body').css('height',(document.body.clientHeight-($('.header').height()+$('.footer').height()))+'px');
@@ -51,6 +63,7 @@
 					$("#toggle-frm").css('display','none');
 					$("#toggle-li-text").css('display','none');
 					
+					// для адаптивности сайта
 					if(document.body.clientWidth < 950){
 						$(".logo-text").css('margin-left',"0");
 						$(".logo-img").css('margin-left',"170px");
@@ -64,11 +77,31 @@
 				}	
 			);
 			$(window).resize();
+			
+			//Выпадающая форма снизу рабочей области
 			$( ".toggle-btn" ).click(function() {
-			  $("#toggle-frm").slideToggle("slow");
-			  $("#toggle-li-btn").css('display','none');
-			  $("#toggle-li-text").css('display','block');
+				$("#toggle-frm").slideToggle("slow");
+				$("#toggle-li-btn").css('display','none');
+				$("#toggle-li-text").css('display','block');
 			});
+						
+			$( ".edit-btn" ).click(function() {
+				$("#toggle-frm").slideToggle("slow");
+				$("#toggle-li-btn").css('display','none');
+				$("#toggle-li-text").css('display','block');
+				document.getElementsByClassName('add-btn')[0].value = 'Изменить запись';
+				var addForm = document.getElementsByClassName('add-form')[0];
+				addForm.getElementsByTagName('input')[0].value = 'PUT';
+				addForm.getElementsByTagName('input')[1].value = 'updateTeam';
+			});
+			
+			$( ".toggle-li" ).click(function() {
+				document.getElementsByClassName('add-btn')[0].value = 'Добавить запись';
+				var addForm = document.getElementsByClassName('add-form')[0];
+				addForm.getElementsByTagName('input')[0].value = 'POST';
+				addForm.getElementsByTagName('input')[1].value = 'addTeam';
+			});
+			
 		</script>
 		<script src="./bootstrap/js/bootstrap.min.js"></script>
 	</body>

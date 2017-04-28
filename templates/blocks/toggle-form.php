@@ -1,134 +1,38 @@
 <div class="block-body-content row no-margin" style="height: 100px; width: 100%;">
 	<div class="search-block row no-margin" style="margin-top:8px;">
-		<form class="navbar-form row" role="search">
+		<form method="POST" class="navbar-form row" role="search">
+			<input type="hidden" name="page" value="search">
 		  <input type="text" class="form-control" placeholder="Search" style="width: 60%; float:left;">
 			<button type="submit" class="btn btn-default" style="width: 30%; margin-left:5%; float:left;">Submit</button>		  
 		</form>
 	</div>
 	<div class="table-block row no-margin" style="padding: 0 10px;">
 		<table class="table table-bordered">
-			<thead> <tr> <th>#</th> <th>First Name</th> <th>Last Name</th> <th>Username</th> <th>Operation</th> </tr> </thead>
-			<tbody> 
-				<tr> <th scope="row">1</th> <td>Mark</td> <td>Otto</td> <td>@mdo</td> 
-					<td style="width:150px;">
-						<!--<button type="button" class="btn btn-primary btn-xs btn-block">Изменить</button>
-						<button type="button" class="btn btn-default btn-xs btn-block">Удалить</button>-->
-						<p>
-						  <button type="button" class="btn btn-primary btn-xs">Изменить</button>
-						  <button type="button" class="btn btn-default btn-xs">Удалить</button>
-						</p>
-					</td> 
-				</tr>
-				<tr> <th scope="row">2</th> <td>Jacob</td> <td>Thornton</td> <td>@fat</td> 
-					<td style="width:150px;">
-						<!--<button type="button" class="btn btn-primary btn-xs btn-block">Изменить</button>
-						<button type="button" class="btn btn-default btn-xs btn-block">Удалить</button>-->
-						<p>
-						  <button type="button" class="btn btn-primary btn-xs">Изменить</button>
-						  <button type="button" class="btn btn-default btn-xs">Удалить</button>
-						</p>
-					</td> 
-				</tr> 
-				<tr> <th scope="row">3</th> <td>Larry</td> <td>the Bird</td> <td>@twitter</td> 
-					<td style="width:150px;">
-						<!--<button type="button" class="btn btn-primary btn-xs btn-block">Изменить</button>
-						<button type="button" class="btn btn-default btn-xs btn-block">Удалить</button>-->
-						<p>
-						  <button type="button" class="btn btn-primary btn-xs">Изменить</button>
-						  <button type="button" class="btn btn-default btn-xs">Удалить</button>
-						</p>
-					</td> 
-				</tr>
-				<tr> <th scope="row">4</th> <td>Mark</td> <td>Otto</td> <td>@mdo</td> 
-					<td style="width:150px;">
-						<!--<button type="button" class="btn btn-primary btn-xs btn-block">Изменить</button>
-						<button type="button" class="btn btn-default btn-xs btn-block">Удалить</button>-->
-						<p>
-						  <button type="button" class="btn btn-primary btn-xs">Изменить</button>
-						  <button type="button" class="btn btn-default btn-xs">Удалить</button>
-						</p>
-					</td> 
-				</tr>
-				<tr> <th scope="row">5</th> <td>Jacob</td> <td>Thornton</td> <td>@fat</td> 
-					<td style="width:150px;">
-						<!--<button type="button" class="btn btn-primary btn-xs btn-block">Изменить</button>
-						<button type="button" class="btn btn-default btn-xs btn-block">Удалить</button>-->
-						<p>
-						  <button type="button" class="btn btn-primary btn-xs">Изменить</button>
-						  <button type="button" class="btn btn-default btn-xs">Удалить</button>
-						</p>
-					</td> 
-				</tr> 
-				<tr> <th scope="row">6</th> <td>Larry</td> <td>the Bird</td> <td>@twitter</td> 
-					<td style="width:150px;">
-						<!--<button type="button" class="btn btn-primary btn-xs btn-block">Изменить</button>
-						<button type="button" class="btn btn-default btn-xs btn-block">Удалить</button>-->
-						<p>
-						  <button type="button" class="btn btn-primary btn-xs">Изменить</button>
-						  <button type="button" class="btn btn-default btn-xs">Удалить</button>
-						</p>
-					</td> 
-				</tr>
-				<tr> <th scope="row">7</th> <td>Mark</td> <td>Otto</td> <td>@mdo</td> 
-					<td style="width:150px;">
-						<!--<button type="button" class="btn btn-primary btn-xs btn-block">Изменить</button>
-						<button type="button" class="btn btn-default btn-xs btn-block">Удалить</button>-->
-						<p>
-						  <button type="button" class="btn btn-primary btn-xs">Изменить</button>
-						  <button type="button" class="btn btn-default btn-xs">Удалить</button>
-						</p>
-					</td> 
-				</tr>
-				<tr> <th scope="row">8</th> <td>Jacob</td> <td>Thornton</td> <td>@fat</td>
-					<td style="width:150px;">
-						<!--<button type="button" class="btn btn-primary btn-xs btn-block">Изменить</button>
-						<button type="button" class="btn btn-default btn-xs btn-block">Удалить</button>-->
-						<p>
-						  <button type="button" class="btn btn-primary btn-xs">Изменить</button>
-						  <button type="button" class="btn btn-default btn-xs">Удалить</button>
-						</p>
-					</td> 
-				</tr> 
-				<tr> <th scope="row">9</th> <td>Larry</td> <td>the Bird</td> <td>@twitter</td> 
-					<td style="width:150px;">
-						<!--<button type="button" class="btn btn-primary btn-xs btn-block">Изменить</button>
-						<button type="button" class="btn btn-default btn-xs btn-block">Удалить</button>-->
-						<p>
-						  <button type="button" class="btn btn-primary btn-xs">Изменить</button>
-						  <button type="button" class="btn btn-default btn-xs">Удалить</button>
-						</p>
-					</td> 
-				</tr>
-				<tr> <th scope="row">7</th> <td>Mark</td> <td>Otto</td> <td>@mdo</td> 
-					<td style="width:150px;">
-						<!--<button type="button" class="btn btn-primary btn-xs btn-block">Изменить</button>
-						<button type="button" class="btn btn-default btn-xs btn-block">Удалить</button>-->
-						<p>
-						  <button type="button" class="btn btn-primary btn-xs">Изменить</button>
-						  <button type="button" class="btn btn-default btn-xs">Удалить</button>
-						</p>
-					</td> 
-				</tr>
-				<tr> <th scope="row">8</th> <td>Jacob</td> <td>Thornton</td> <td>@fat</td> 
-					<td style="width:150px;">
-						<!--<button type="button" class="btn btn-primary btn-xs btn-block">Изменить</button>
-						<button type="button" class="btn btn-default btn-xs btn-block">Удалить</button>-->
-						<p>
-						  <button type="button" class="btn btn-primary btn-xs">Изменить</button>
-						  <button type="button" class="btn btn-default btn-xs">Удалить</button>
-						</p>
-					</td> 
-				</tr> 
-				<tr> <th scope="row">9</th> <td>Larry</td> <td>the Bird</td> <td>@twitter</td> 
-					<td style="width:150px;">
-						<!--<button type="button" class="btn btn-primary btn-xs btn-block">Изменить</button>
-						<button type="button" class="btn btn-default btn-xs btn-block">Удалить</button>-->
-						<p>
-						  <button type="button" class="btn btn-primary btn-xs">Изменить</button>
-						  <button type="button" class="btn btn-default btn-xs">Удалить</button>
-						</p>
-					</td> 
-				</tr>
+			<thead> <tr> <th>ID</th> <th>Название</th> <th>ID санатория</th> <th>Операции</th> </tr> </thead>
+			<tbody>
+				<? $answer=json_decode($jsonAnswer); ?>
+				<? foreach($answer->data->objects as $answerElement): ?>
+					<tr> 
+						<th scope="row"><?=$answerElement->id?></th>
+						<td><?=$answerElement->name?></td>
+						<td><?=$answerElement->sanatoriumId?></td>
+						
+						<td style="width:150px;">
+							<!--<button type="button" class="btn btn-primary btn-xs btn-block">Изменить</button>
+							<button type="button" class="btn btn-default btn-xs btn-block">Удалить</button>-->
+							<p style="margin:0;">
+									<input name="id" hidden value="<?=$answerElement->id?>"/>
+									<button type="submit" class="edit-btn btn btn-primary btn-xs" style="margin-right:5px; float:left;">Изменить</button>
+								<form method="POST" style="margin:0; float:left;">
+									<input name="type" hidden value="DELETE"/>
+									<input name="page" hidden value="deleteTeam"/>
+									<input name="id" hidden value="<?=$answerElement->id?>"/>
+									<button type="submit" class="btn btn-default btn-xs">Удалить</button>
+								</form>
+							</p>
+						</td> 
+					</tr>					
+				<? endforeach;?>				
 			</tbody>
 		</table>
 	</div>
@@ -137,24 +41,27 @@
 <div class="block inline toggle-form">
 	<div class="inner row">
 		<ul class="nav vertical-menu">
-			<li id="toggle-li-btn" class="active"><a class="toggle-btn" href="#" style="text-align:center;">Добавить новую запись</a></li>
-			<li id="toggle-li-text" class="active"><a class="toggle-btn" href="#" style="text-align:center;">Форма добавления новой записи</a></li>
+			<li id="toggle-li-btn" class="toggle-li active"><a class="toggle-btn" href="#" style="text-align:center;">Добавить новую запись</a></li>
+			<li id="toggle-li-text" class="toggle-li active"><a class="toggle-btn" href="#" style="text-align:center;">Форма добавления новой записи</a></li>
 		</ul>
 	</div>
 	
 </div>
 <div class="row" id="toggle-frm" style="height: 200px; background:rgba(238, 238, 238, 0.24); margin-left:0; border-bottom:1px solid #64abfb; border-left:1px solid #64abfb; border-right:1px solid #64abfb; width:100%;">
 	<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1" style="padding-top:10px;">
-		<form>
+		<form class="add-form" method="POST">
+		  <input name="type" hidden value="PUT"/>
+		  <input name="page" hidden value="updateTeam"/>
+		  <input name="id" hidden value="23"/>
 		  <div class="form-group">
 			<label for="exampleInputEmail1">Email address</label>
-			<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+			<input name="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
 		  </div>
 		  <div class="form-group">
 			<label for="exampleInputPassword1">Password</label>
-			<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+			<input type="text" name="sanatoriumId" class="form-control" id="exampleInputPassword1" placeholder="Password">
 		  </div>
-		  <button type="submit" class="btn btn-default" style="float:right;">Добавить запись</button>
+		  <input type="submit" class="add-btn btn btn-default" name="action" style="float:right;" value="Добавить запись"/>
 		</form>
 	</div>
 </div>

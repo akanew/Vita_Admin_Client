@@ -48,3 +48,12 @@
     </div>
   </div>
 </nav>
+<!-- Логотип должен быть ниже чем nav-bar (иначе стили упадут) -->
+<div class="logo hidden-xs">
+	<div class="logo-text">
+		<img src="./logo3.png" alt="logo"/>
+	</div>
+	<div class="logo-img">
+		<img src="./logo2.png" alt="logo"/>
+	</div>
+</div>
